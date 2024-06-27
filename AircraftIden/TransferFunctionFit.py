@@ -298,7 +298,7 @@ class TransferFunctionFit(object):
                         if J < accept_J:
                             print("")
                             pool.terminate()
-                            return self.tf
+                            return self.tf, J
 
                         del results[i]
                         break
@@ -309,7 +309,7 @@ class TransferFunctionFit(object):
             pool.terminate()
             pool.join()
             raise
-        return self.tf
+        return self.tf, J
 
     def setup_transferfunc(self, x):
         self.tf = self.get_transfer_function_by_x(x)
